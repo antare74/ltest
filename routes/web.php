@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/oke', function () {
+Route::get('/test', function () {
+    return 'oke';
+});
+
+Route::any('/test', function () {
     return 'oke';
 });
