@@ -17,10 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return 'oke';
+Route::get('/trim-string', function () {
+    $string = '  Hello World!  ';
+    return trim($string);
 });
 
-Route::any('/test', function () {
-    return 'oke';
+
+Route::get('/trim-string-with-parameters', function () {
+    $string = '  Hello World!  ';
+    return trim($string, ' !');
+});
+
+Route::get('/trim-string-with-parameters-and-flags', function () {
+    $string = '  Hello World!  ';
+    return trim($string, ' !', STR_PAD_BOTH);
+});
+
+Route::get('/trim-string-with-parameters-and-flags-and-encoding', function () {
+    $string = '  Hello World!  ';
+    return trim($string, ' !', STR_PAD_BOTH, 'UTF-8');
 });
