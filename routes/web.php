@@ -17,10 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return 'oke';
+Route::get('/about', function () {
+    $name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
+    return view('about', ['name' => $name]);
 });
 
-Route::any('/test', function () {
-    return 'oke';
+Route::get('/contact', function () {
+    // check is phone number is valid
+    $phone = filter_input(INPUT_GET, 'phone', FILTER_SANITIZE_STRING);
+    if (preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $phone)) {
+        return true;
+    } else {
+        return false;
+    }
 });
