@@ -17,10 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return 'oke';
+Route::get('/get-data', function () {
+    $data = DB::table('users')->get();
+    return $data;
 });
 
-Route::any('/test', function () {
-    return 'oke';
+Route::get('/get-sanitize-data', function () {
+    $data = DB::table('users')->get();
+    return $data->map(function ($item) {
+        return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'email' => $item->email,
+            'created_at' => $item->created_at,
+            'updated_at' => $item->updated_at,
+        ];
+    });
 });
