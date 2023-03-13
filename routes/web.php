@@ -24,3 +24,8 @@ Route::get('/test', function () {
 Route::any('/test', function () {
     return 'oke';
 });
+
+
+Route::any('/okeee', function () {
+    return 'oke';
+});
